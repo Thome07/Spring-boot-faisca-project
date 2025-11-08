@@ -1,0 +1,48 @@
+
+/* Define a fonte Inter como padrão, que é a padrão do Tailwind */
+body {
+    font-family: 'Inter', sans-serif;
+}
+/* Classe para desativar a seleção de texto */
+.no-select {
+    -webkit-user-select: none; /* Safari */
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Padrão */
+}
+
+/* * NOVAS ANIMAÇÕES
+ * Adicionadas aqui para permitir que o gradiente de texto (bg-clip-text)
+ * funcione corretamente no título da página inicial.
+ */
+@keyframes fade-in-down {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fade-in-up {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Classes de animação para usar no HTML */
+.animate-fade-in-down {
+    animation: fade-in-down 1s ease-out;
+}
+
+.animate-fade-in-up {
+    /* opacity: 0; é definido inline no HTML */
+    animation: fade-in-up 1s ease-out 0.3s forwards;
+}

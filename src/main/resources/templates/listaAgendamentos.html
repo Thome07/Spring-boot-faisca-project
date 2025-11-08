@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Faíscas Agendadas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+    </style>
+</head>
+<body class="bg-gray-900 min-h-screen"> <div class="container mx-auto max-w-4xl p-8">
+    <header class="flex justify-between items-center mb-8">
+        <h1 class="text-4xl font-bold text-white">Faíscas Agendadas</h1> <a th:href="@{/}" class="text-orange-500 hover:text-orange-400 transition-colors"> &larr; Voltar para a página inicial
+    </a>
+    </header>
+
+    <div class="space-y-6">
+
+        <div th:each="faisca : ${faiscas}" class="bg-gray-800 p-6 rounded-2xl shadow-lg shadow-orange-900/50 border border-gray-700">
+            <div class="flex flex-col md:flex-row justify-between">
+                <div>
+                    <h2 class="text-2xl font-semibold text-orange-500" th:text="${faisca.nome}">
+                        Nome do Palestrante
+                    </h2>
+                    <p class="text-gray-300 mt-2" th:text="${faisca.descricao}">
+                        Descrição do que será falado.
+                    </p>
+                </div>
+                <div class="mt-4 md:mt-0 md:text-right flex-shrink-0">
+                        <span class="text-lg font-bold text-gray-100">
+                           <span th:text="${#temporals.format(faisca.data, 'dd/MM/yyyy')}">01/01/2025</span>
+                        </span>
+                    <span class="block text-sm text-gray-400" th:text="${#temporals.dayOfWeekName(faisca.data)}">
+                            Terça-feira
+                        </span>
+                </div>
+            </div>
+        </div>
+
+        <div th:if="${faiscas.isEmpty()}" class="bg-gray-800 p-10 rounded-2xl shadow-lg text-center border border-gray-700">
+            <h2 class="text-2xl font-semibold text-gray-300">Nenhuma faísca agendada ainda.</h2>
+            <p class="text-gray-400 mt-2">Seja o primeiro a compartilhar seu conhecimento!</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>
